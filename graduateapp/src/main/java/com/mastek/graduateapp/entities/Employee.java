@@ -14,6 +14,12 @@ public class Employee {
 	int joiningDate;
 	String password;
 	
+	//Constructor
+	public Employee() {
+	}
+	
+	//Getters and setters
+	
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -51,11 +57,15 @@ public class Employee {
 		this.password = password;
 	}
 	
+	//toSring
+	
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", secondName=" + secondName
 				+ ", email=" + email + ", joiningDate=" + joiningDate + ", password=" + password + "]";
 	}
+	
+	//Hashcode
 	
 	@Override
 	public int hashCode() {
