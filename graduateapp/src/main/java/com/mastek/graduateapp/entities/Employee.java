@@ -1,7 +1,18 @@
 package com.mastek.graduateapp.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+
 
 @Entity
 @Table(name="JPA_Employees")
@@ -14,12 +25,30 @@ public class Employee {
 	int joiningDate;
 	String password;
 	
+	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
+	
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
+			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
+			inverseJoinColumns = {@JoinColumn(name="fk_TrainingScoreId")} 
+			)
+	@XmlTransient 
+	public Set<TrainingScore> getAssignedTrainingScore() {
+		return assignedTrainingScore;
+	}
+
+	public void setAssignedTrainingScore(Set<TrainingScore> assignedTrainingScore) {
+		this.assignedTrainingScore = assignedTrainingScore;
+	}
+
 	//Constructor
 	public Employee() {
 	}
 	
 	//Getters and setters
 	
+	@Id
 	public int getEmployeeId() {
 		return employeeId;
 	}
