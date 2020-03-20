@@ -1,9 +1,11 @@
 package com.mastek.graduateapp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
-import com.masket.graduateapp.dao.EmployeeJPADAO;
+import com.mastek.graduateapp.dao.EmployeeJPADAO;
+
 
 @Component
 public class GraduateService {
