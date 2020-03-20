@@ -24,7 +24,7 @@ public class EssentialTraining {
 	Set<TrainingScore> trainingScoreAssigned = new HashSet<>();
 	
 	
-	@OneToMany(mappedBy="assignedEssentialTraining", cascade=CascadeType.ALL)
+//	@OneToMany(mappedBy="assignedEssentialTraining", cascade=CascadeType.ALL)
 	@XmlTransient
 	public Set<TrainingScore> getTrainingScoreAssigned() {
 		return trainingScoreAssigned;

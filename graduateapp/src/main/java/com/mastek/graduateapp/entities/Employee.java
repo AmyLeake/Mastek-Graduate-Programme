@@ -31,11 +31,11 @@ public class Employee {
 	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
 	
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
-			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
-			inverseJoinColumns = {@JoinColumn(name="fk_TrainingScoreId")} 
-			)
+//	@ManyToMany(cascade=CascadeType.ALL)
+//	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
+//			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
+//			inverseJoinColumns = {@JoinColumn(name="fk_TrainingScoreId")} 
+//			)
 	@XmlTransient 
 	public Set<TrainingScore> getAssignedTrainingScore() {
 		return assignedTrainingScore;

@@ -24,8 +24,8 @@ public class TrainingScore {
 	EssentialTraining assignedEssentialTraining;
 	Set<Employee> assignedEmployee = new HashSet<>();
 	
-	@ManyToMany(mappedBy="assignedTrainingScore")
-	@XmlTransient
+//	@ManyToMany(mappedBy="assignedTrainingScore")
+//	@XmlTransient
 	public Set<Employee> getAssignedEmployee() {
 		return assignedEmployee;
 	}
@@ -34,8 +34,8 @@ public class TrainingScore {
 		this.assignedEmployee = assignedEmployee;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "FK_Essential_Training_ID")
+//	@ManyToOne
+//	@JoinColumn(name = "FK_Essential_Training_ID")
 	@XmlTransient
 	public EssentialTraining getAssignedEssentialTraining() {
 		return assignedEssentialTraining;
