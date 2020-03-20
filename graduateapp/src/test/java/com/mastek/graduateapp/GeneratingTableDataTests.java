@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.masket.graduateapp.dao.CareerPathJPADAO;
-import com.masket.graduateapp.dao.EmployeeJPADAO;
-import com.masket.graduateapp.dao.EssentialTrainingJPADAO;
-import com.masket.graduateapp.dao.MentorJPADAO;
-import com.masket.graduateapp.dao.SiteDeploymentJPADAO;
-import com.masket.graduateapp.dao.TrainingScoreJPADAO;
+import com.mastek.graduateapp.dao.CareerPathJPADAO;
+import com.mastek.graduateapp.dao.EmployeeJPADAO;
+import com.mastek.graduateapp.dao.EssentialTrainingJPADAO;
+import com.mastek.graduateapp.dao.MentorJPADAO;
+import com.mastek.graduateapp.dao.SiteDeploymentJPADAO;
+import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.Employee;
 
 
