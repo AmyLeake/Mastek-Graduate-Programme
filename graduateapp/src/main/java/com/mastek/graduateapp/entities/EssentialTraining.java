@@ -5,10 +5,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 public class EssentialTraining {
 	
@@ -35,6 +39,7 @@ public class EssentialTraining {
 	}
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getTrainingId() {
 		return trainingId;
 	}

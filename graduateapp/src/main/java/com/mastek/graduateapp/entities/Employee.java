@@ -5,15 +5,18 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 
-
+@XmlRootElement
 @Entity
 @Table(name="JPA_Employees")
 public class Employee {
@@ -22,7 +25,7 @@ public class Employee {
 	String firstName;
 	String secondName;
 	String email;
-	int joiningDate;
+	String joiningDate;
 	String password;
 	
 	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
@@ -49,6 +52,7 @@ public class Employee {
 	//Getters and setters
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -73,12 +77,15 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJoiningDate() {
+	
+	public String getJoiningDate() {
 		return joiningDate;
 	}
-	public void setJoiningDate(int joiningDate) {
+
+	public void setJoiningDate(String joiningDate) {
 		this.joiningDate = joiningDate;
 	}
+
 	public String getPassword() {
 		return password;
 	}
