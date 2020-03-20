@@ -36,18 +36,23 @@ public class GeneratingTableDataTests {
 	@Autowired
 	CareerPathJPADAO careerPathDAO;
 	
-	@Test
-	void employeeDAOAdd() {
-		Employee emp = new Employee();
-		emp.setFirstName("Example First Name");
-		emp.setSecondName("Example Second Name");
-		emp.setEmail("Example Email");
-		emp.setJoiningDate("01/01/2020");
-		emp.setPassword("examplePassword");
-		
-		emp = empDAO.save(emp);
-		
+//	@Test
+//	void employeeDAOAdd() {
+//		Employee emp = new Employee();
+//		emp.setFirstName("Example First Name");
+//		emp.setSecondName("Example Second Name");
+//		emp.setEmail("Example Email");
+//		emp.setJoiningDate("01/01/2020");
+//		emp.setPassword("examplePassword");
+//		
+//		emp = empDAO.save(emp);
+//		
 //		assertNotNull(emp);
-	}
+//	}
 
+	@Test
+	void test() {
+		System.out.println("Testing");
+	}
+	
 }

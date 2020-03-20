@@ -21,29 +21,29 @@ public class TrainingScore {
 	double userScorePercentage;
 	boolean pass;
 	
-	EssentialTraining assignedEssentialTraining;
-	Set<Employee> assignedEmployee = new HashSet<>();
+//	EssentialTraining assignedEssentialTraining;
+//	Set<Employee> assignedEmployee = new HashSet<>();
 	
 //	@ManyToMany(mappedBy="assignedTrainingScore")
 //	@XmlTransient
-	public Set<Employee> getAssignedEmployee() {
-		return assignedEmployee;
-	}
-
-	public void setAssignedEmployee(Set<Employee> assignedEmployee) {
-		this.assignedEmployee = assignedEmployee;
-	}
+//	public Set<Employee> getAssignedEmployee() {
+//		return assignedEmployee;
+//	}
+//
+//	public void setAssignedEmployee(Set<Employee> assignedEmployee) {
+//		this.assignedEmployee = assignedEmployee;
+//	}
 
 //	@ManyToOne
 //	@JoinColumn(name = "FK_Essential_Training_ID")
-	@XmlTransient
-	public EssentialTraining getAssignedEssentialTraining() {
-		return assignedEssentialTraining;
-	}
-
-	public void setAssignedEssentialTraining(EssentialTraining assignedEssentialTraining) {
-		this.assignedEssentialTraining = assignedEssentialTraining;
-	}
+	//@XmlTransient
+//	public EssentialTraining getAssignedEssentialTraining() {
+//		return assignedEssentialTraining;
+//	}
+//
+//	public void setAssignedEssentialTraining(EssentialTraining assignedEssentialTraining) {
+//		this.assignedEssentialTraining = assignedEssentialTraining;
+//	}
 
 	public TrainingScore() {
 	}
