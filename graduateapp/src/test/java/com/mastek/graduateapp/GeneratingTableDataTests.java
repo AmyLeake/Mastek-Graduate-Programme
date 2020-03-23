@@ -14,7 +14,9 @@ import com.mastek.graduateapp.dao.SiteDeploymentJPADAO;
 import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
 import com.mastek.graduateapp.entities.Employee;
+import com.mastek.graduateapp.entities.EssentialTraining;
 import com.mastek.graduateapp.entities.Mentor;
+import com.mastek.graduateapp.entities.TrainingScore;
 import com.mastek.graduateapp.services.GraduateService;
 
 
@@ -42,7 +44,7 @@ public class GeneratingTableDataTests {
 	@Autowired
 	GraduateService gradSrv;
 	
-	/*@Test
+	@Test
 	void employeeDAOAdd() {
 		Employee emp = new Employee();
 		emp.setFirstName("Example First Name");
@@ -55,8 +57,8 @@ public class GeneratingTableDataTests {
 		
 		assertNotNull(emp);
 	}
-*/
-	/*@Test
+
+	@Test
 	void careerPathDAOAdd() {
 		CareerPath career = new CareerPath();
 		career.setTitleId("Senior Developer");
@@ -67,9 +69,9 @@ public class GeneratingTableDataTests {
 		career = careerPathDAO.save(career);
 		
 		assertNotNull(career);
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	void mentorDAOAdd() {
 		Mentor mentor = new Mentor();
 		mentor.setMentorName("John Smith");
@@ -80,11 +82,46 @@ public class GeneratingTableDataTests {
 		mentor = mentorDAO.save(mentor);
 		
 		assertNotNull(mentor);
-	}*/
+	}
 	
-	/*@Test
+	@Test
+	void essentialTraingDAOAdd() {
+		EssentialTraining eTrain = new EssentialTraining();
+		eTrain.setTrainingName("Anti-Bribery");
+		eTrain.setMinimumScorePercentage(70);
+		
+		eTrain=essTrainDAO.save(eTrain);
+		
+		assertNotNull(eTrain);
+	}
+	
+	@Test
+	void trainingScoreDAOAdd() {
+		TrainingScore tScore = new TrainingScore();
+		tScore.setUserScorePercentage(60);
+		tScore.setPass(false);
+		
+		tScore=trainScoreDAO.save(tScore);
+		
+		assertNotNull(tScore);
+	}
+	
+	
+	//@Test
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-	}*/
+	}
+	
+	//@Test
+	void testAssignEssentialTrainingToTrainingScore() {
+		EssentialTraining eTrain = gradSrv.assignEssentialTrainingToTrainingScore(11, 15);
+		assertNotNull(eTrain.getTrainingScoreAssigned(), "Essential Training Not Assigned");
+	}
+	
+	@Test
+	void testAssignEmployeeToTrainingScore() {
+		Employee emp = gradSrv.assignEmployeeToTrainingScore(1, 15);
+		assertNotNull(emp.getAssignedTrainingScore(), "Employee Not Assigned");
+	}
 }

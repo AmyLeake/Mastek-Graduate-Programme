@@ -8,9 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mastek.graduateapp.dao.CareerPathJPADAO;
+import com.mastek.graduateapp.dao.EmployeeJPADAO;
+import com.mastek.graduateapp.dao.EssentialTrainingJPADAO;
 import com.mastek.graduateapp.dao.MentorJPADAO;
+import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
+import com.mastek.graduateapp.entities.Employee;
+import com.mastek.graduateapp.entities.EssentialTraining;
 import com.mastek.graduateapp.entities.Mentor;
+import com.mastek.graduateapp.entities.TrainingScore;
 
 @Component
 public class GraduateService {
@@ -20,6 +26,15 @@ public class GraduateService {
 	
 	@Autowired
 	MentorJPADAO mentorDAO;
+	
+	@Autowired
+	EssentialTrainingJPADAO essTrainDAO;
+	
+	@Autowired
+	TrainingScoreJPADAO tScoreDAO;
+	
+	@Autowired
+	EmployeeJPADAO empDAO;
 	
 	//Service test methods
 	
@@ -51,6 +66,31 @@ public class GraduateService {
 		careerPathDAO.save(career);
 		
 		return mentor;
+	}
+	
+	@Transactional
+	public EssentialTraining assignEssentialTrainingToTrainingScore(int eTrainId, int tScoreId) {
+		EssentialTraining eTrain = essTrainDAO.findById(eTrainId).get();
+		TrainingScore tScore = tScoreDAO.findById(tScoreId).get();
+		
+		tScore.setAssignedEssentialTraining(eTrain);
+		eTrain.getTrainingScoreAssigned().add(tScore);
+		
+		essTrainDAO.save(eTrain);
+		tScoreDAO.save(tScore);
+		
+		return eTrain;
+	}
+	
+	@Transactional
+	public Employee assignEmployeeToTrainingScore(int empId, int tScoreId) {
+		Employee emp = empDAO.findById(empId).get();
+		TrainingScore tScore = tScoreDAO.findById(tScoreId).get();
+		
+		emp.getAssignedTrainingScore().add(tScore);
+		empDAO.save(emp);
+		
+		return emp;
 	}
 
 }
