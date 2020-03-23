@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mastek.graduateapp.dao.CareerPathJPADAO;
+import com.mastek.graduateapp.dao.EmployeeJPADAO;
 import com.mastek.graduateapp.dao.MentorJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
+import com.mastek.graduateapp.entities.Employee;
 import com.mastek.graduateapp.entities.Mentor;
 
 @Component
@@ -20,6 +22,10 @@ public class GraduateService {
 	
 	@Autowired
 	MentorJPADAO mentorDAO;
+	
+	@Autowired
+	EmployeeJPADAO empDAO;
+	
 	
 	//Service test methods
 	
@@ -51,6 +57,17 @@ public class GraduateService {
 		careerPathDAO.save(career);
 		
 		return mentor;
+	}
+	
+	@Transactional
+	public Employee assignEmployeeToCareerPath(int employeeId, int jobId) {
+		Employee emp = empDAO.findById(employeeId).get();
+		CareerPath newCareerPath = careerPathDAO.findById(jobId).get();
+		
+		emp.getPathAssigned().add(newCareerPath);
+		empDAO.save(emp);
+		
+		return emp;
 	}
 
 }

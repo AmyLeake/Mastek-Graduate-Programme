@@ -42,7 +42,7 @@ public class GeneratingTableDataTests {
 	@Autowired
 	GraduateService gradSrv;
 	
-	/*@Test
+	@Test
 	void employeeDAOAdd() {
 		Employee emp = new Employee();
 		emp.setFirstName("Example First Name");
@@ -55,8 +55,8 @@ public class GeneratingTableDataTests {
 		
 		assertNotNull(emp);
 	}
-*/
-	/*@Test
+
+	@Test
 	void careerPathDAOAdd() {
 		CareerPath career = new CareerPath();
 		career.setTitleId("Senior Developer");
@@ -67,9 +67,9 @@ public class GeneratingTableDataTests {
 		career = careerPathDAO.save(career);
 		
 		assertNotNull(career);
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	void mentorDAOAdd() {
 		Mentor mentor = new Mentor();
 		mentor.setMentorName("John Smith");
@@ -80,11 +80,21 @@ public class GeneratingTableDataTests {
 		mentor = mentorDAO.save(mentor);
 		
 		assertNotNull(mentor);
-	}*/
+	}
 	
-	/*@Test
+	// Associations
+	
+	@Test
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-	}*/
+	}
+	
+	@Test
+	void testAssignEmployeeToCareerPath() {
+		Employee emp = gradSrv.assignEmployeeToCareerPath(1, 4);
+		assertNotNull(emp.getPathAssigned(), "Employee Not Assigned");
+	}
+	
+	
 }
