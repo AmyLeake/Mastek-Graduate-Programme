@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -19,31 +22,44 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table(name="JPA_Employees")
+@NamedQuery(name="Employee.findByUsernameAndPassword", //Declare query name as method in dao
+query="select a from Employee a where a.username=:username and a.password=:password")
 public class Employee {
 	
 	int employeeId;
+	
+	@FormParam("username")
+	String username;
+	@FormParam("firstName")
 	String firstName;
+	@FormParam("secondName")
 	String secondName;
+	@FormParam("email")
 	String email;
+	@FormParam("joiningDate")
 	String joiningDate;
+	@FormParam("password")
 	String password;
 	
-//	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
-//	
-//	
-//	@ManyToMany(cascade=CascadeType.ALL)
-//	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
-//			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
-//			inverseJoinColumns = {@JoinColumn(name="fk_TrainingScoreId")} 
-//			)
-//	@XmlTransient 
-//	public Set<TrainingScore> getAssignedTrainingScore() {
-//		return assignedTrainingScore;
-//	}
-//
-//	public void setAssignedTrainingScore(Set<TrainingScore> assignedTrainingScore) {
-//		this.assignedTrainingScore = assignedTrainingScore;
-//	}
+
+
+	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
+	
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
+			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
+			inverseJoinColumns = {@JoinColumn(name="fk_TrainingScoreId")} 
+			)
+	@XmlTransient 
+	public Set<TrainingScore> getAssignedTrainingScore() {
+		return assignedTrainingScore;
+	}
+
+	public void setAssignedTrainingScore(Set<TrainingScore> assignedTrainingScore) {
+		this.assignedTrainingScore = assignedTrainingScore;
+	}
+
 
 	//Constructor
 	public Employee() {
@@ -58,6 +74,14 @@ public class Employee {
 	}
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
+	}
+	@Column(unique=true)
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -95,11 +119,7 @@ public class Employee {
 	
 	//toSring
 	
-	@Override
-	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", secondName=" + secondName
-				+ ", email=" + email + ", joiningDate=" + joiningDate + ", password=" + password + "]";
-	}
+
 	
 	//Hashcode
 	
@@ -111,6 +131,13 @@ public class Employee {
 		return result;
 	}
 	
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", username=" + username + ", firstName=" + firstName
+				+ ", secondName=" + secondName + ", email=" + email + ", joiningDate=" + joiningDate + ", password="
+				+ password + ", assignedTrainingScore=" + assignedTrainingScore + "]";
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
