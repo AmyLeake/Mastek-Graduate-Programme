@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 @XmlRootElement
 @Entity
 public class EssentialTraining {
@@ -19,20 +20,20 @@ public class EssentialTraining {
 	int trainingId;
 	String trainingName;
 	int minimumScorePercentage;
-	
-	
-	Set<TrainingScore> trainingScoreAssigned = new HashSet<>();
-	
-	
-//	@OneToMany(mappedBy="assignedEssentialTraining", cascade=CascadeType.ALL)
-	@XmlTransient
-	public Set<TrainingScore> getTrainingScoreAssigned() {
-		return trainingScoreAssigned;
-	}
-
-	public void setTrainingScoreAssigned(Set<TrainingScore> trainingScoreAssigned) {
-		this.trainingScoreAssigned = trainingScoreAssigned;
-	}
+//	
+//	
+//	Set<TrainingScore> trainingScoreAssigned = new HashSet<>();
+//	
+//	
+////	@OneToMany(mappedBy="assignedEssentialTraining", cascade=CascadeType.ALL)
+//	@XmlTransient
+//	public Set<TrainingScore> getTrainingScoreAssigned() {
+//		return trainingScoreAssigned;
+//	}
+//
+//	public void setTrainingScoreAssigned(Set<TrainingScore> trainingScoreAssigned) {
+//		this.trainingScoreAssigned = trainingScoreAssigned;
+//	}
 
 	//constructor
 	public EssentialTraining() {
