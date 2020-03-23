@@ -8,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -35,9 +37,23 @@ public class CareerPath {
 		this.path = path;
 	}
 
-		//constructor
-		public CareerPath() {
-		}
+	
+	Set<Employee> employeePath = new HashSet<>();
+	
+	@ManyToMany(mappedBy="pathAssigned")
+	@XmlTransient
+	public Set<Employee> getEmployeePath() {
+		return employeePath;
+	}
+	
+	public void setEmployeePath(Set<Employee> employeePath) {
+		this.employeePath = employeePath;
+	}
+		
+	
+	//constructor
+	public CareerPath() {
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

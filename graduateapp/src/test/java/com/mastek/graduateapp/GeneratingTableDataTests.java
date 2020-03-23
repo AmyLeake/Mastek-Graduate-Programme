@@ -119,9 +119,15 @@ public class GeneratingTableDataTests {
 		assertNotNull(eTrain.getTrainingScoreAssigned(), "Essential Training Not Assigned");
 	}
 	
-	@Test
+	//@Test
 	void testAssignEmployeeToTrainingScore() {
 		Employee emp = gradSrv.assignEmployeeToTrainingScore(1, 15);
 		assertNotNull(emp.getAssignedTrainingScore(), "Employee Not Assigned");
+	}
+	
+	//@Test
+	void testAssignEmployeeToCareerPath() {
+		Employee emp = gradSrv.assignEmployeeToCareerPath(1, 4);
+		assertNotNull(emp.getPathAssigned(), "Employee Not Assigned");
 	}
 }

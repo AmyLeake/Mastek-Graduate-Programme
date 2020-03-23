@@ -28,6 +28,7 @@ public class GraduateService {
 	MentorJPADAO mentorDAO;
 	
 	@Autowired
+
 	EssentialTrainingJPADAO essTrainDAO;
 	
 	@Autowired
@@ -35,6 +36,7 @@ public class GraduateService {
 	
 	@Autowired
 	EmployeeJPADAO empDAO;
+
 	
 	//Service test methods
 	
@@ -88,6 +90,16 @@ public class GraduateService {
 		TrainingScore tScore = tScoreDAO.findById(tScoreId).get();
 		
 		emp.getAssignedTrainingScore().add(tScore);
+		empDAO.save(emp);
+		
+		return emp;
+	}
+
+	public Employee assignEmployeeToCareerPath(int employeeId, int jobId) {
+		Employee emp = empDAO.findById(employeeId).get();
+		CareerPath newCareerPath = careerPathDAO.findById(jobId).get();
+		
+		emp.getPathAssigned().add(newCareerPath);
 		empDAO.save(emp);
 		
 		return emp;
