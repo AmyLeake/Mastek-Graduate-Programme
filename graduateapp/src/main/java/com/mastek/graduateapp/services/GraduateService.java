@@ -11,10 +11,16 @@ import org.springframework.stereotype.Component;
 import com.mastek.graduateapp.dao.EmployeeJPADAO;
 import com.mastek.graduateapp.api.EmployeeAPI;
 import com.mastek.graduateapp.dao.CareerPathJPADAO;
+import com.mastek.graduateapp.dao.EmployeeJPADAO;
+import com.mastek.graduateapp.dao.EssentialTrainingJPADAO;
 import com.mastek.graduateapp.dao.MentorJPADAO;
+import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
 import com.mastek.graduateapp.entities.Employee;
+import com.mastek.graduateapp.entities.Employee;
+import com.mastek.graduateapp.entities.EssentialTraining;
 import com.mastek.graduateapp.entities.Mentor;
+import com.mastek.graduateapp.entities.TrainingScore;
 
 @Component
 public class GraduateService implements EmployeeAPI{
@@ -27,6 +33,15 @@ public class GraduateService implements EmployeeAPI{
 	
 	@Autowired
 	CareerPathJPADAO careerPathDAO;
+
+	@Autowired
+	EssentialTrainingJPADAO essTrainDAO;
+	
+	@Autowired
+	TrainingScoreJPADAO tScoreDAO;
+	
+
+
 	
 	//Service test methods
 	
@@ -59,6 +74,41 @@ public class GraduateService implements EmployeeAPI{
 		
 		return mentor;
 
+	}
+	
+	@Transactional
+	public EssentialTraining assignEssentialTrainingToTrainingScore(int eTrainId, int tScoreId) {
+		EssentialTraining eTrain = essTrainDAO.findById(eTrainId).get();
+		TrainingScore tScore = tScoreDAO.findById(tScoreId).get();
+		
+		tScore.setAssignedEssentialTraining(eTrain);
+		eTrain.getTrainingScoreAssigned().add(tScore);
+		
+		essTrainDAO.save(eTrain);
+		tScoreDAO.save(tScore);
+		
+		return eTrain;
+	}
+	
+	@Transactional
+	public Employee assignEmployeeToTrainingScore(int empId, int tScoreId) {
+		Employee emp = empDAO.findById(empId).get();
+		TrainingScore tScore = tScoreDAO.findById(tScoreId).get();
+		
+		emp.getAssignedTrainingScore().add(tScore);
+		empDAO.save(emp);
+		
+		return emp;
+	}
+
+	public Employee assignEmployeeToCareerPath(int employeeId, int jobId) {
+		Employee emp = empDAO.findById(employeeId).get();
+		CareerPath newCareerPath = careerPathDAO.findById(jobId).get();
+		
+		emp.getPathAssigned().add(newCareerPath);
+		empDAO.save(emp);
+		
+		return emp;
 	}
 
 	@Override

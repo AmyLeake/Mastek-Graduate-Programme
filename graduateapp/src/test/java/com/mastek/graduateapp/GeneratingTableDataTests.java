@@ -21,7 +21,9 @@ import com.mastek.graduateapp.dao.SiteDeploymentJPADAO;
 import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
 import com.mastek.graduateapp.entities.Employee;
+import com.mastek.graduateapp.entities.EssentialTraining;
 import com.mastek.graduateapp.entities.Mentor;
+import com.mastek.graduateapp.entities.TrainingScore;
 import com.mastek.graduateapp.services.GraduateService;
 
 
@@ -89,10 +91,54 @@ class GeneratingTableDataTests {
 		
 		assertNotNull(mentor);
 	}
+
 	
-/*	@Test
+	@Test
+	void essentialTraingDAOAdd() {
+		EssentialTraining eTrain = new EssentialTraining();
+		eTrain.setTrainingName("Anti-Bribery");
+		eTrain.setMinimumScorePercentage(70);
+		
+		eTrain=essTrainDAO.save(eTrain);
+		
+		assertNotNull(eTrain);
+	}
+	
+
+
+	@Test
+	void trainingScoreDAOAdd() {
+		TrainingScore tScore = new TrainingScore();
+		tScore.setUserScorePercentage(60);
+		tScore.setPass(false);
+		
+		tScore=trainScoreDAO.save(tScore);
+		
+		assertNotNull(tScore);
+	}
+	
+	
+	//@Test
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-	}*/
+	}
+	
+	//@Test
+	void testAssignEssentialTrainingToTrainingScore() {
+		EssentialTraining eTrain = gradSrv.assignEssentialTrainingToTrainingScore(11, 15);
+		assertNotNull(eTrain.getTrainingScoreAssigned(), "Essential Training Not Assigned");
+	}
+	
+	//@Test
+	void testAssignEmployeeToTrainingScore() {
+		Employee emp = gradSrv.assignEmployeeToTrainingScore(1, 15);
+		assertNotNull(emp.getAssignedTrainingScore(), "Employee Not Assigned");
+	}
+	
+	//@Test
+	void testAssignEmployeeToCareerPath() {
+		Employee emp = gradSrv.assignEmployeeToCareerPath(1, 4);
+		assertNotNull(emp.getPathAssigned(), "Employee Not Assigned");
+	}
 }

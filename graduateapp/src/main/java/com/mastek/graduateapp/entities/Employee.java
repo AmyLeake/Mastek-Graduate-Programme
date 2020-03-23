@@ -18,6 +18,8 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.data.annotation.Transient;
+
 
 @XmlRootElement
 @Entity
@@ -42,6 +44,8 @@ public class Employee {
 	String password;
 	
 
+	//Relationships
+	
 
 	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
 	
@@ -59,6 +63,26 @@ public class Employee {
 	public void setAssignedTrainingScore(Set<TrainingScore> assignedTrainingScore) {
 		this.assignedTrainingScore = assignedTrainingScore;
 	}
+
+	
+	
+	Set<CareerPath> pathAssigned = new HashSet<>();
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "JPA_CAREER_PATH_ASSIGNED",
+				joinColumns= {@JoinColumn(name="fk_employeeId")},
+				inverseJoinColumns = {@JoinColumn(name="fk_jobId")}
+				)
+	@Transient
+	@XmlTransient
+	public Set<CareerPath> getPathAssigned() {
+		return pathAssigned;
+	}
+	
+	public void setPathAssigned(Set<CareerPath> pathAssigned) {
+		this.pathAssigned = pathAssigned;
+	}
+	
 
 
 	//Constructor
@@ -151,8 +175,6 @@ public class Employee {
 			return false;
 		return true;
 	}
-	
 
-	
-	
+		
 }
