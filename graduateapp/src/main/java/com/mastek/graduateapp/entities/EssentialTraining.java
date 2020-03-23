@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 @XmlRootElement
 @Entity
 public class EssentialTraining {
@@ -19,6 +20,7 @@ public class EssentialTraining {
 	int trainingId;
 	String trainingName;
 	int minimumScorePercentage;
+
 	
 	
 

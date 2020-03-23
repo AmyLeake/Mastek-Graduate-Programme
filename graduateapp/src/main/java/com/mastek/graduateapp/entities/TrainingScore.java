@@ -18,9 +18,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TrainingScore {
 
 	int trainingScoreId;
-	double userScorePercentage;
+	int userScorePercentage;
 	boolean pass;
 	
+
 	EssentialTraining assignedEssentialTraining;
 	Set<Employee> assignedEmployee = new HashSet<>();
 	
@@ -58,12 +59,15 @@ public class TrainingScore {
 	public void setTrainingScoreId(int trainingScoreId) {
 		this.trainingScoreId = trainingScoreId;
 	}
-	public double getUserScorePercentage() {
+	
+	public int getUserScorePercentage() {
 		return userScorePercentage;
 	}
-	public void setUserScorePercentage(double userScorePercentage) {
+
+	public void setUserScorePercentage(int userScorePercentage) {
 		this.userScorePercentage = userScorePercentage;
 	}
+
 	public boolean isPass() {
 		return pass;
 	}
