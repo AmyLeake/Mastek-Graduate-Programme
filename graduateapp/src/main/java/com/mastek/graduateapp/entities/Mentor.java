@@ -22,23 +22,29 @@ import org.springframework.data.annotation.Transient;
 @Table(name="JPA_Mentor")
 @NamedQueries({
 @NamedQuery(name="Mentor.findByLanguageKnown",
-			query="select m from Mentor m where m.skills=:skills"),
+			query="select m from Mentor m where m.mainLanguage=:mainLanguage"),
 @NamedQuery(name="Mentor.findByJobTitle",
-			query="select m from Mentor m where m.jobTitle=:jobTitle")})
+			query="select m from Mentor m where m.designation=:designation")})
 public class Mentor {
 
 	int mentorId;
+	
 	@FormParam("mentorName")
 	String mentorName;
+	
 	@FormParam("jobTitle")
 	String jobTitle;
-<<<<<<< HEAD
+
 	@FormParam("skills")
-=======
-	Designation designation;
-	Languages mainLanguage;
->>>>>>> branch 'master' of https://github.com/AmyLeake/Mastek-Graduate-Programme.git
 	String skills;
+	
+	@FormParam("desingation")
+	Designation designation;
+	
+	@FormParam("mainLanguage")
+	Languages mainLanguage;
+
+
 	@FormParam("grade")
 	int grade;
 
@@ -126,14 +132,12 @@ public class Mentor {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
+
 		return "Mentor [mentorId=" + mentorId + ", mentorName=" + mentorName + ", jobTitle=" + jobTitle + ", skills="
 				+ skills + ", grade=" + grade + "]";
-=======
-		return "Mentor [mentorId=" + mentorId + ", mentorName=" + mentorName + ", jobTitle=" + jobTitle
-				+ ", designation=" + designation + ", mainLanguage=" + mainLanguage + ", skills=" + skills + ", grade="
-				+ grade + ", currentPath=" + currentPath + "]";
->>>>>>> branch 'master' of https://github.com/AmyLeake/Mastek-Graduate-Programme.git
+
+	
+
 	}
 
 	@Override

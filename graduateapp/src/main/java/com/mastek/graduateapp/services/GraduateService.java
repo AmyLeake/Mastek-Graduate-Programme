@@ -6,12 +6,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.transaction.Transactional;
 
-<<<<<<< HEAD
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-=======
 
->>>>>>> branch 'master' of https://github.com/AmyLeake/Mastek-Graduate-Programme.git
+
+
 import org.springframework.stereotype.Component;
 
 
@@ -19,29 +19,25 @@ import com.mastek.graduateapp.dao.EmployeeJPADAO;
 
 
 import com.mastek.graduateapp.api.EmployeeAPI;
-
+import com.mastek.graduateapp.api.MentorAPI;
 import com.mastek.graduateapp.dao.CareerPathJPADAO;
 
 import com.mastek.graduateapp.dao.EssentialTrainingJPADAO;
 import com.mastek.graduateapp.dao.MentorJPADAO;
 import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.entities.CareerPath;
+import com.mastek.graduateapp.entities.Designation;
 import com.mastek.graduateapp.entities.Employee;
 
 import com.mastek.graduateapp.entities.EssentialTraining;
+import com.mastek.graduateapp.entities.Languages;
 import com.mastek.graduateapp.entities.Mentor;
 import com.mastek.graduateapp.entities.TrainingScore;
 
-<<<<<<< HEAD
+
 @Component
 @Scope
-=======
-
-
-
-@Component	
->>>>>>> branch 'master' of https://github.com/AmyLeake/Mastek-Graduate-Programme.git
-public class GraduateService implements EmployeeAPI{
+public class GraduateService implements EmployeeAPI, MentorAPI{
 	
 	@Autowired
 	EmployeeJPADAO empDAO;
@@ -145,5 +141,17 @@ public class GraduateService implements EmployeeAPI{
 	public Employee registerNewAccount(Employee newEmployee) {
 		newEmployee = empDAO.save(newEmployee);
 		return newEmployee;
+	}
+
+	@Override
+	public Iterable<Mentor> findMentorByDesignation(Designation designation) {
+		Iterable<Mentor> men = mentorDAO.findByJobTitle(designation);
+		return men;
+	}
+
+	@Override
+	public Iterable<Mentor> findMentorByLanguage(Languages mainLanguage) {
+		Iterable<Mentor> men = mentorDAO.findByLanguageKnown(mainLanguage);
+		return men;
 	}
 }

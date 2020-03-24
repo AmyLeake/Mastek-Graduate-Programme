@@ -45,7 +45,7 @@ class GeneratingTableDataTests {
 
 	@Autowired
 	GraduateService gradSrv;
-<<<<<<< HEAD
+
 	
 	/*@Test
 =======
@@ -128,7 +128,7 @@ class GeneratingTableDataTests {
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-	}*/
+	}
 
 
 	
