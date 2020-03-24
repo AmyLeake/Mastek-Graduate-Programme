@@ -6,7 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -15,12 +18,21 @@ import org.springframework.data.annotation.Transient;
 @XmlRootElement
 @Entity
 @Table(name="JPA_Mentor")
+@NamedQueries({
+@NamedQuery(name="Mentor.findByLanguageKnown",
+			query="select m from Mentor m where m.skills=:skills"),
+@NamedQuery(name="Mentor.findByJobTitle",
+			query="select m from Mentor m where m.jobTitle=:jobTitle")})
 public class Mentor {
 
 	int mentorId;
+	@FormParam("mentorName")
 	String mentorName;
+	@FormParam("jobTitle")
 	String jobTitle;
+	@FormParam("skills")
 	String skills;
+	@FormParam("grade")
 	int grade;
 	
 	CareerPath currentPath;
@@ -85,10 +97,12 @@ public class Mentor {
 		this.grade = grade;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Mentor [mentorId=" + mentorId + ", mentorName=" + mentorName + ", jobTitle=" + jobTitle + ", skills="
-				+ skills + ", grade=" + grade + ", currentPath=" + currentPath + "]";
+				+ skills + ", grade=" + grade + "]";
 	}
 
 	@Override

@@ -21,27 +21,35 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.data.annotation.Transient;
 
 
+
 @XmlRootElement
 @Entity
 @Table(name="JPA_Employees")
 @NamedQuery(name="Employee.findByUsernameAndPassword", //Declare query name as method in dao
-query="select a from Employee a where a.username=:username and a.password=:password")
+		query="select a from Employee a where a.username=:username and a.password=:password")
 public class Employee {
 	
 	int employeeId;
 	
 	@FormParam("username")
 	String username;
-	@FormParam("firstName")
-	String firstName;
-	@FormParam("secondName")
-	String secondName;
-	@FormParam("email")
-	String email;
-	@FormParam("joiningDate")
-	String joiningDate;
+	
 	@FormParam("password")
 	String password;
+	
+	@FormParam("firstName")
+	String firstName;
+	
+	@FormParam("secondName")
+	String secondName;
+	
+	@FormParam("email")
+	String email;
+	
+	@FormParam("joiningDate")
+	String joiningDate;
+	
+
 	
 
 	//Relationships
@@ -99,7 +107,7 @@ public class Employee {
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
-	@Column(unique=true)
+	@Column(unique=false)
 	public String getUsername() {
 		return username;
 	}
@@ -155,11 +163,13 @@ public class Employee {
 		return result;
 	}
 	
+
+
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", username=" + username + ", firstName=" + firstName
-				+ ", secondName=" + secondName + ", email=" + email + ", joiningDate=" + joiningDate + ", password="
-				+ password + ", assignedTrainingScore=" + assignedTrainingScore + "]";
+		return "Employee [employeeId=" + employeeId + ", username=" + username + ", password=" + password
+				+ ", firstName=" + firstName + ", secondName=" + secondName + ", email=" + email + ", joiningDate="
+				+ joiningDate + "]";
 	}
 
 	@Override

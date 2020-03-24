@@ -10,5 +10,5 @@ import com.mastek.graduateapp.entities.Employee;
 @Repository
 public interface EmployeeJPADAO extends CrudRepository<Employee, Integer> {
 
-	Iterable<Employee> findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
+Iterable<Employee> findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
 }

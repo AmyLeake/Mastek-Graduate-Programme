@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 
@@ -23,6 +24,7 @@ import com.mastek.graduateapp.entities.Mentor;
 import com.mastek.graduateapp.entities.TrainingScore;
 
 @Component
+@Scope
 public class GraduateService implements EmployeeAPI{
 	
 	@Autowired
@@ -101,6 +103,7 @@ public class GraduateService implements EmployeeAPI{
 		return emp;
 	}
 
+	@Transactional
 	public Employee assignEmployeeToCareerPath(int employeeId, int jobId) {
 		Employee emp = empDAO.findById(employeeId).get();
 		CareerPath newCareerPath = careerPathDAO.findById(jobId).get();
