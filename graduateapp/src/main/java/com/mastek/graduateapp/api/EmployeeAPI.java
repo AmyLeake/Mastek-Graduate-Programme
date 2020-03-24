@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import com.mastek.graduateapp.entities.Employee;
 
 
-@Path("/employee/")
+@Path("/graduate/")
 public interface EmployeeAPI {
 	
 	@GET

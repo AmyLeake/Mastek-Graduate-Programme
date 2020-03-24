@@ -38,7 +38,7 @@ public class Mentor {
 	@FormParam("skills")
 	String skills;
 	
-	@FormParam("desingation")
+	@FormParam("designation")
 	Designation designation;
 	
 	@FormParam("mainLanguage")
