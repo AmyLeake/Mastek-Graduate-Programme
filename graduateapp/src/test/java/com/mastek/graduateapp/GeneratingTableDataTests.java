@@ -46,7 +46,7 @@ class GeneratingTableDataTests {
 	@Autowired
 	GraduateService gradSrv;
 
-	@Test
+	//@Test
 	void employeeDAOAdd() {
 		Employee emp = new Employee();
 		emp.setFirstName("Example First Name");
@@ -123,7 +123,6 @@ class GeneratingTableDataTests {
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-<<<<<<< HEAD
 	}*/
 
 
