@@ -57,7 +57,6 @@ public class Employee {
 
 	Set<TrainingScore> assignedTrainingScore = new HashSet<>();
 	
-	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="JPA_EMPLOYEE_TRAINING", 
 			joinColumns= {@JoinColumn(name="fk_EmployeeId")}, 
@@ -70,7 +69,10 @@ public class Employee {
 
 	public void setAssignedTrainingScore(Set<TrainingScore> assignedTrainingScore) {
 		this.assignedTrainingScore = assignedTrainingScore;
+
 	}
+
+	
 
 	
 	
@@ -91,6 +93,7 @@ public class Employee {
 		this.pathAssigned = pathAssigned;
 	}
 	
+
 
 
 	//Constructor

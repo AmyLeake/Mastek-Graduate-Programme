@@ -23,6 +23,7 @@ public class EssentialTraining {
 
 	
 	
+
 	Set<TrainingScore> trainingScoreAssigned = new HashSet<>();
 	
 	

@@ -25,6 +25,7 @@ public class TrainingScore {
 	EssentialTraining assignedEssentialTraining;
 	Set<Employee> assignedEmployee = new HashSet<>();
 	
+
 	@ManyToMany(mappedBy="assignedTrainingScore")
 	@XmlTransient
 	public Set<Employee> getAssignedEmployee() {

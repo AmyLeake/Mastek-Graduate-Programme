@@ -14,12 +14,7 @@ import com.mastek.graduateapp.dao.SiteDeploymentJPADAO;
 import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
 import com.mastek.graduateapp.dao.EmployeeJPADAO;
 
-import com.mastek.graduateapp.dao.EmployeeJPADAO;
-import com.mastek.graduateapp.dao.EssentialTrainingJPADAO;
-import com.mastek.graduateapp.dao.MentorJPADAO;
-import com.mastek.graduateapp.dao.SiteDeploymentJPADAO;
-import com.mastek.graduateapp.dao.TrainingScoreJPADAO;
-import com.mastek.graduateapp.entities.CareerPath;
+
 import com.mastek.graduateapp.entities.Employee;
 import com.mastek.graduateapp.entities.EssentialTraining;
 import com.mastek.graduateapp.entities.Mentor;
@@ -47,11 +42,16 @@ class GeneratingTableDataTests {
 	
 	@Autowired
 	CareerPathJPADAO careerPathDAO;
-	
+
 	@Autowired
 	GraduateService gradSrv;
+<<<<<<< HEAD
 	
 	/*@Test
+=======
+
+	//@Test
+>>>>>>> branch 'master' of https://github.com/AmyLeake/Mastek-Graduate-Programme.git
 	void employeeDAOAdd() {
 		Employee emp = new Employee();
 		emp.setFirstName("Example First Name");
@@ -66,7 +66,13 @@ class GeneratingTableDataTests {
 		assertNotNull(emp);
 	}
 
+
 	@Test
+	void test() {
+		System.out.println("Testing");
+	}
+
+	/*@Test
 	void careerPathDAOAdd() {
 		CareerPath career = new CareerPath();
 		career.setTitleId("Senior Developer");
@@ -122,7 +128,9 @@ class GeneratingTableDataTests {
 	void testAssignMentorToCareerPath() {
 		Mentor mentor = gradSrv.assignMentorToCareerPath(7, 4);
 		assertNotNull(mentor.getCurrentPath(), "Mentor Not Assigned");
-	}
+	}*/
+
+
 	
 	//@Test
 	void testAssignEssentialTrainingToTrainingScore() {
